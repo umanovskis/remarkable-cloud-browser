@@ -1,0 +1,52 @@
+div {
+  margin: 0 auto;
+  width: 60%;
+}
+ 
+h1 {
+  font: 400 40px/1.5 Georgia, serif;
+  margin: 0;
+  padding: 0;
+}
+ 
+ul {
+  list-style-type: none;
+  display: block;
+  margin: auto;
+  padding: 0;
+  width: 60%;
+}
+ 
+li {
+  font: 200 20px/1.5 Georgia, serif;
+  border-bottom: 1px solid #ccc;
+  padding: 2;
+}
+
+ 
+li:last-child {
+  border: none;
+}
+ 
+li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 350px;
+}
+ 
+li a:hover {
+  background: #f6f6f6;
+}
+
+.footer {
+  position fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+div.footer {
+  font-size: 12px;
+}

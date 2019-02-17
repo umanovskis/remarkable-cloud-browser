@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>reMarkable Browser</title>
+<link href="/css/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+<h1>reMarkable: {{.Path}}</h1>
+
+<div>
+<ul class="fa-ul">
+    {{range .Items}}
+    {{if .Directory}}
+        <li><i class="fa-li fa fa-folder"></i><a href="{{.Name}}">{{.Name}}</a></li>
+    {{else}}
+        {{if eq .Path ".."}}
+        <li><i class="fa-li fa fa-arrow-up"></i><a href="../view/">{{.Name}}</a></li>
+        {{else}}
+        <li><i class="fa-li fa fa-book"></i><a href="../download/{{.Path}}/{{.Name}}">{{.Name}}</a></li>
+        {{end}}
+    {{end}}
+    {{end}}
+</ul>
+</div>
+
+<div class="footer">
+<p>reMarkable cloud browser</p>
+</div>
+</body>
+</html>
