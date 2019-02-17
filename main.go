@@ -40,14 +40,13 @@ type ViewData struct {
 }
 
 func ShowErrorPage(w http.ResponseWriter, err Error) {
-	t, _ := template.ParseFiles("error.html")
+	t, _ := template.ParseFiles("templates/error.html")
 	t.Execute(w, err)
 }
 
 func (h *DownloadHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	docpath := r.URL.Path[len("/download/"):]
 	node, _ := h.Api.Filetree.NodeByPath(docpath, h.Api.Filetree.Root())
-	fmt.Println(docpath)
 	if node.IsFile() {
 		err := preparePdf(h.Api, node)
 		if err != nil {
@@ -61,7 +60,7 @@ func (h *DownloadHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *ViewHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("view.html")
+	t, _ := template.ParseFiles("templates/view.html")
 	root := h.Api.Filetree.Root()
 	docpath := r.URL.Path[len("/view/"):]
 	if len(docpath) > 0 {
@@ -89,8 +88,6 @@ func (h *ViewHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Path:  docpath,
 		Items: items,
 	}
-	fmt.Println(data.Path)
-	fmt.Println("%d items", len(data.Items))
 	t.Execute(w, data)
 }
 
